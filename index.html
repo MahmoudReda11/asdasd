@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web code</title>
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script src="html5-qrcode.min.js"></script>
+    <style>
+        .result{
+        
+        }
+        .col{
+            width: 100%;
+        }
+        #reader{
+            width: 100%;
+            background-color: black;
+            margin: auto;
+        }
+        .row{
+          display:flex;
+          width: 80%;
+
+          background-color: aqua;
+        }
+        #reader > div:nth-child(1) > span:nth-child(1){
+            display: none;
+        }
+        #reader__dashboard_section > div:nth-child(2){
+            display: none;
+        }
+      </style>
+</head>
+<body>
+
+    <input type="text" placeholder="ادخل رقم الكارت" id="inpt">
+
+    
+    <div class="row">
+      <div class="col">
+        <div id="reader"></div>
+      </div>
+      <div class="col" style="padding:30px;">
+      </div>
+    </div>
+
+
+    <script type="text/javascript">
+    function onScanSuccess(qrCodeMessage) {
+        document.getElementById('inpt').value = qrCodeMessage;
+    }
+    function onScanError(errorMessage) {
+      //handle scan error
+    }
+    var html5QrcodeScanner = new Html5QrcodeScanner(
+        "reader", { fps: 10, qrbox: 250 });
+    html5QrcodeScanner.render(onScanSuccess, onScanError);
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
